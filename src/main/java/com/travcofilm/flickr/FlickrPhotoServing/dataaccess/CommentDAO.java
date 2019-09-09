@@ -12,4 +12,8 @@ public interface CommentDAO extends JpaRepository<Comment,Long> {
     @Modifying
     @Query(value = "INSERT INTO `yhuiv2y1d1q6q805`.`comment` (`content`, `photo_fk`) VALUES (:content,:photo_id)",nativeQuery = true)
     void saveComment(@Param("content") String content,@Param("photo_id") int id);
+    @Modifying
+    @Query(value = "DELETE * FROM `yhuiv2y1d1q6q805`.`comment` WHERE `content` = ?1 AND `photo_fk` = ?2",nativeQuery = true)
+    void deleteCommentByPhotoIdandContent(String content,int photo_id);
+
 }

@@ -22,4 +22,8 @@ public class PhotosService {
     public void save(Photo photo){
         photoDAO.save(photo);
     }
+
+    public List<Photo> findAll() {
+        return photoDAO.findAll();
+    }
 }

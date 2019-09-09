@@ -6,17 +6,17 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="comment")
+@Table(name = "comment")
 public class Comment {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
-    @Column(name="content")
+    @Column(name = "content")
     private String content;
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name="photo_fk")
+    @JoinColumn(name = "photo_fk")
     private Photo photo;
 
 

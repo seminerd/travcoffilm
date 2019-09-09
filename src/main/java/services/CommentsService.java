@@ -18,4 +18,7 @@ public class CommentsService {
     public void post(String content, int photo_id) {
         commentDAO.saveComment(content, photo_id);
     }
+    public void deleteCommentByContent(String content,int id){
+        commentDAO.deleteCommentByPhotoIdandContent(content,id);
+    }
 }
