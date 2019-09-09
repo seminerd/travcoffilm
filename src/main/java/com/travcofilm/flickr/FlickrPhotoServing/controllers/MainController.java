@@ -15,7 +15,7 @@ import services.PhotosetsService;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Properties;
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 @RestController
 public class MainController {
     @Autowired
