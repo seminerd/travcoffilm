@@ -53,8 +53,9 @@ public class MainController {
     }
 
     @PostMapping("/comment")
-    public void postComment(@RequestParam("content") String comment, @RequestParam("photo_id") int photo_id) {
-        commentsService.post(comment, photo_id);
+    public void postComment(@RequestParam("content") String comment, @RequestParam("photo_id") String photo_id) {
+        int id = Integer.valueOf(photo_id);
+        commentsService.post(comment,id);
     }
 
     @DeleteMapping("/comment")
