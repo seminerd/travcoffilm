@@ -5,13 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @Repository
 public interface PhotoDAO extends JpaRepository<Photo,Long> {
 
     @Query(value="select * from photo where id=?1",nativeQuery = true)
-    Photo findPhotoById(int id);
+    Photo findPhotoById(BigInteger id);
     @Query(value="select * from photo ",nativeQuery = true)
     List<Photo> findAllPhotos();
 }

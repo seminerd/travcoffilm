@@ -5,13 +5,14 @@ import com.travcofilm.flickr.FlickrPhotoServing.models.Photo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 @Service
 public class PhotosService {
     @Autowired
     PhotoDAO photoDAO;
 
-    public Photo getPhotoById(int id) {
+    public Photo getPhotoById(BigInteger id) {
         return photoDAO.findPhotoById(id);
     }
 

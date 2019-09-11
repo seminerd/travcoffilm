@@ -13,6 +13,7 @@ import services.PhotosService;
 import services.PhotosetsService;
 
 import javax.transaction.Transactional;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.Properties;
 @CrossOrigin("*")
@@ -53,13 +54,13 @@ public class MainController {
     }
 
     @PostMapping("/comment")
-    public void postComment(@RequestParam("content") String comment, @RequestParam("photo_id") String photo_id) {
-        int id = Integer.valueOf(photo_id);
-        commentsService.post(comment,id);
+    public void postComment(@RequestParam("content") String comment, @RequestParam("photo_id") BigInteger photo_id) {
+
+        commentsService.post(comment,photo_id);
     }
 
     @DeleteMapping("/comment")
-    public void deleteComment(@RequestParam("content") String comment, @RequestParam("photo_id") int photo_id) {
+    public void deleteComment(@RequestParam("content") String comment, @RequestParam("photo_id") BigInteger photo_id) {
         commentsService.deleteCommentByContent(comment, photo_id);
 
     }
