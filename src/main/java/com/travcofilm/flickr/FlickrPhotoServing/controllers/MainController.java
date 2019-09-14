@@ -53,11 +53,8 @@ public class MainController {
 
     @GetMapping("/home")
     public List<Photo> getPhotoset() {
-        List<Photo> photo15 = new ArrayList<Photo>();
-        for (int i = 0; i < 15; i++) {
-            photo15.add(JsonReturnModifier.getRandomElement(photosService.findAll()));
-        }
-        return photo15;
+
+        return photosService.findAll();
     }
 
     @PostMapping("/comment")
