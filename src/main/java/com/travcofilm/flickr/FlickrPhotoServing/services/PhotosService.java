@@ -1,4 +1,4 @@
-package services;
+package com.travcofilm.flickr.FlickrPhotoServing.services;
 
 import com.travcofilm.flickr.FlickrPhotoServing.dataaccess.PhotoDAO;
 import com.travcofilm.flickr.FlickrPhotoServing.models.Photo;

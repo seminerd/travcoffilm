@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,9 +36,8 @@ public class Photo {
     @JoinColumn(name = "photoset_fk")
     private Photoset photoset;
     @OneToMany
-    @JsonManagedReference
     @JoinColumn(name = "photo_fk")
-    Set<Comment> comments;
+    List<Comment> comments;
     @Column(name="source")
     private String source;
 
@@ -74,11 +74,11 @@ public class Photo {
         this.title = title;
     }
 
-    public Set<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Set<Comment> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
     public Photoset getPhotoset() {

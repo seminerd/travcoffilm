@@ -1,6 +1,5 @@
-package services;
+package com.travcofilm.flickr.FlickrPhotoServing.services;
 import com.travcofilm.flickr.FlickrPhotoServing.dataaccess.PhotosetDAO;
-import com.travcofilm.flickr.FlickrPhotoServing.models.Comment;
 import com.travcofilm.flickr.FlickrPhotoServing.models.Photo;
 import com.travcofilm.flickr.FlickrPhotoServing.models.Photoset;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Service

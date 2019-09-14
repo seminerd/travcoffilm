@@ -6,10 +6,9 @@ import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import services.CommentsService;
-import services.PhotosService;
-import services.PhotosetsService;
+import com.travcofilm.flickr.FlickrPhotoServing.services.CommentsService;
+import com.travcofilm.flickr.FlickrPhotoServing.services.PhotosService;
+import com.travcofilm.flickr.FlickrPhotoServing.services.PhotosetsService;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -38,21 +37,21 @@ public class AppConfig {
 
     }
 
-    @Bean(name = "photosService")
-    @Scope(value = "singleton")
-    public PhotosService photosService() {
-        return new PhotosService();
-    }
-    @Scope(value = "singleton")
-    @Bean(name = "commentsService")
-    public CommentsService commentsService(){
-        return new CommentsService();
-    }
-    @Scope(value = "singleton")
-    @Bean(name = "photosetsService")
-    public PhotosetsService photosetsService(){
-        return new PhotosetsService();
-    }
+//    @Bean(name = "photosService")
+//    @Scope(value = "singleton")
+//    public PhotosService photosService() {
+//        return new PhotosService();
+//    }
+//    @Scope(value = "singleton")
+//    @Bean(name = "commentsService")
+//    public CommentsService commentsService(){
+//        return new CommentsService();
+//    }
+//    @Scope(value = "singleton")
+//    @Bean(name = "photosetsService")
+//    public PhotosetsService photosetsService(){
+//        return new PhotosetsService();
+//    }
 
     @Bean(name = "dataSource")
     @ConfigurationProperties(prefix = "spring.datasource")

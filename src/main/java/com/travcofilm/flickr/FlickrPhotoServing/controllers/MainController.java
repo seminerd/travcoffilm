@@ -3,19 +3,22 @@ package com.travcofilm.flickr.FlickrPhotoServing.controllers;
 import com.travcofilm.flickr.FlickrPhotoServing.models.Photo;
 import com.travcofilm.flickr.FlickrPhotoServing.models.Photoset;
 import com.travcofilm.flickr.FlickrPhotoServing.models.WrapSet;
+import com.travcofilm.flickr.FlickrPhotoServing.utilities.JsonReturnModifier;
 import kong.unirest.JacksonObjectMapper;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.CommentsService;
-import services.PhotosService;
-import services.PhotosetsService;
+import com.travcofilm.flickr.FlickrPhotoServing.services.CommentsService;
+import com.travcofilm.flickr.FlickrPhotoServing.services.PhotosService;
+import com.travcofilm.flickr.FlickrPhotoServing.services.PhotosetsService;
 
 import javax.transaction.Transactional;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
 @CrossOrigin("*")
 @RestController
 public class MainController {
@@ -50,13 +53,17 @@ public class MainController {
 
     @GetMapping("/home")
     public List<Photo> getPhotoset() {
-        return photosService.findAll();
+        List<Photo> photo15 = new ArrayList<Photo>();
+        for (int i = 0; i < 15; i++) {
+            photo15.add(JsonReturnModifier.getRandomElement(photosService.findAll()));
+        }
+        return photo15;
     }
 
     @PostMapping("/comment")
     public void postComment(@RequestParam("content") String comment, @RequestParam("photo_id") BigInteger photo_id) {
 
-        commentsService.post(comment,photo_id);
+        commentsService.post(comment, photo_id);
     }
 
     @DeleteMapping("/comment")
