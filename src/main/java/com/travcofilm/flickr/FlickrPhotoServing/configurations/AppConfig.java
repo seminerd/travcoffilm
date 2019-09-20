@@ -1,5 +1,6 @@
 package com.travcofilm.flickr.FlickrPhotoServing.configurations;
 
+import com.travcofilm.flickr.FlickrPhotoServing.utilities.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.*;
@@ -16,6 +17,11 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:application.properties")
 public class AppConfig {
+    @Bean
+    @Scope("singleton")
+    public Logger getLogger(){
+        return new Logger();
+    }
 
     @Autowired
     Environment env;
@@ -29,6 +35,7 @@ public class AppConfig {
     @Scope("singleton")
     @Primary
     public Properties getProp(){
+
         Properties prop = new Properties();
         prop.put("api_key",env.getProperty("user.flickr.apikey"));
         prop.put("user_id",env.getProperty("user.flickr.userid"));
@@ -37,21 +44,6 @@ public class AppConfig {
 
     }
 
-//    @Bean(name = "photosService")
-//    @Scope(value = "singleton")
-//    public PhotosService photosService() {
-//        return new PhotosService();
-//    }
-//    @Scope(value = "singleton")
-//    @Bean(name = "commentsService")
-//    public CommentsService commentsService(){
-//        return new CommentsService();
-//    }
-//    @Scope(value = "singleton")
-//    @Bean(name = "photosetsService")
-//    public PhotosetsService photosetsService(){
-//        return new PhotosetsService();
-//    }
 
     @Bean(name = "dataSource")
     @ConfigurationProperties(prefix = "spring.datasource")

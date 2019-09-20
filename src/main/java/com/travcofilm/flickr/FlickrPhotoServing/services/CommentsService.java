@@ -1,6 +1,7 @@
 package com.travcofilm.flickr.FlickrPhotoServing.services;
 
 import com.travcofilm.flickr.FlickrPhotoServing.dataaccess.CommentDAO;
+import com.travcofilm.flickr.FlickrPhotoServing.models.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,8 @@ public class CommentsService {
     }
     public void deleteCommentByContent(String content,BigInteger id){
         commentDAO.deleteCommentByPhotoIdandContent(content,id);
+    }
+    public Comment findCommentByContentAndPhoto(String content, BigInteger photo_fk){
+        return commentDAO.findCommentByContentAndAndPhoto(content,photo_fk);
     }
 }

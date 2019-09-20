@@ -17,5 +17,7 @@ public interface CommentDAO extends JpaRepository<Comment,Long> {
     @Modifying
     @Query(value = "DELETE * FROM `yhuiv2y1d1q6q805`.`comment` WHERE `content` = ?1 AND `photo_fk` = ?2",nativeQuery = true)
     void deleteCommentByPhotoIdandContent(String content,BigInteger photo_id);
+    @Query(value="SELECT * FROM `yhuiv2y1d1q6q805`.`comment` WHERE `content` =?1 AND `photo_fk`=?2 ",nativeQuery = true)
+    Comment findCommentByContentAndAndPhoto(String content,BigInteger photo_fk);
 
 }
